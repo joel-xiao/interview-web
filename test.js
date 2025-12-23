@@ -220,3 +220,187 @@ function printBinaryTree(depth, prefix = '') {
   }
 }
 printBinaryTree(3)
+
+
+
+Array.prototype.myCall = function (context, ...args) {
+  const symbol = Symbol();
+  context[symbol] = this;
+  const result = context[symbol](...args);
+  delete context[symbol];
+  return result
+}
+
+Array.prototype.myApply = function (context, args) {
+ const symbol = Symbol();
+  context[symbol] = this;
+  const result = context[symbol](...args);
+  delete context[symbol];
+  return result
+}
+
+Array.prototype.myBind = function (context, ...args) {
+  const self = this;
+  return function(...args) {
+    const symbol = Symbol();
+    context[symbol] = this instanceof self ? this : self;
+    context[symbol](...args);
+  }
+}
+
+
+
+function debounce(fn, ts = 0) {
+  let timer;
+  return function(...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn(...args);
+    }, ts)
+  }
+}
+
+
+function throttle(fn, ts) {
+  let last_ts = 0;
+
+  return function(...args) {
+    let now = new Date().getTime();
+    if (last_ts + ts < now) {
+      fn(...args);
+      last_ts = now;
+    }
+  }
+}
+
+
+function clone(obj) {
+  if (typeof obj !== 'object' && obj !== null ) return obj;
+  const newObj = Array.isArray(obj) ? [] : {};
+
+  for (let key in obj) {
+    newObj[key] = obj[key];
+  }
+
+  return newObj
+}
+
+
+function deepClone(obj, map = new WeakMap()) {
+  if (typeof obj !== 'object' && obj !== null ) return obj;
+  if (map.hash(obj)) return map.get(obj);
+  const newObj = Array.isArray(obj) ? [] : {};
+  map.set(obj, newObj);
+  for(let key in obj) {
+    newObj[key] = deepClone(obj[key], map);
+  }
+  return newObj
+}
+
+
+
+function Parent (){
+  this.name = 'parent';
+  this.log = function () {
+    console.log(this.name)
+  }
+}
+
+function Child(...args) {
+  Parent.call(this, args);
+  this.name = 'child';
+}
+
+Child.prototype = Object.create(Parent.prototype);
+Child.prototype.constructor = Child;
+const child = new Child();
+child.log();
+
+
+function myInstanceOf(obj, cls) {
+  let proto = Object.getPrototypeOf(obj);
+  while (proto) {
+    if (proto === cls.prototype) return true;
+    proto = Object.getPrototypeOf(proto);
+  }
+  return false
+}
+
+
+function myNew(fn, ...args) {
+  const obj = {}
+  Object.setPrototypeOf(obj, fn.prototype);
+  const result = fn.apply(obj, args);
+  return typeof result === 'object' && result !== null ? result : obj
+}
+
+const Exmaple = (function() {
+  let instance;
+   function create() {
+    return {}
+  }
+  return {
+    getInstance: function() {
+      if (!instance)  instance = create();
+      return instance;
+    }
+  }
+})()
+
+Exmaple.getInstance().a = 1;
+console.log(Exmaple.getInstance().a);
+
+
+class Car {
+  constructor(brand, model) {
+    this.brand = brand;
+    this.model = model;
+  }
+}
+
+class Bick {
+  constructor(name){
+    this.name = name
+  }
+}
+
+function vehicleFactory(type) {
+  switch (type) {
+    case 'car': return new Car();
+    case 'bick': return new Bick();
+    default: throw new Error('Unknown vehicle type');
+  }
+}
+
+
+
+const unit = {
+  '%': v> v * 100,
+  byte: v => v,
+  mb: v => v * 1024,
+  gb: v => v * 1024
+}
+
+
+class Hande {
+  constructor (fn) {
+    this.fn = fn;
+  }
+
+  setNext(next) {
+    this.next = next;
+    return next;
+  }
+  handel(res) {
+    if (this.fn(res)&& this.next) this.next.handel(res);
+  }
+}
+
+
+const h1 = new Hande(v => v < 100);
+const h2 = new Hande(v => v < 1000);
+h1.setNext(h2);
+
+h1.handel(100);
+
+

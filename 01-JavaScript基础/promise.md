@@ -514,5 +514,5 @@ Promise.allSettled([p1, p2, p3])
 ---
 
 **相关文件**：
-- [JS_坑.md](./JS_坑.md) - JavaScript 常见坑点（异步相关）
-- [mode.md](./mode.md) - JavaScript 模块化
+- [JavaScript常见坑点.md](./JavaScript常见坑点.md) - JavaScript 常见坑点（异步相关）
+- [JavaScript模块化.md](./JavaScript模块化.md) - JavaScript 模块化

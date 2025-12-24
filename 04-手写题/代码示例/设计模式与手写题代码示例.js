@@ -2,9 +2,11 @@
  * 设计模式与手写题代码示例集合
  * 
  * 对应文档：
- * - Design pattern.md - 设计模式原理详解
- * - 继承.md - JavaScript 继承机制详解
- * - promise.md - Promise 核心原理
+ * - ../../01-JavaScript基础/Design pattern.md - 设计模式原理详解
+ * - ../../01-JavaScript基础/继承.md - JavaScript 继承机制详解
+ * - ../../01-JavaScript基础/promise.md - Promise 核心原理
+ * 
+ * 文件位置：04-手写题/代码示例/test.js
  * 
  * 本文件包含：
  * 1. 设计模式实现代码（单例、工厂、观察者、原型、适配器、策略、装饰者）

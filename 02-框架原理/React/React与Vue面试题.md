@@ -272,5 +272,5 @@
 ---
 
 **相关文件**：
-- [React_VS_Vue.md](./React_VS_Vue.md) - React vs Vue 核心对比
+- [React与Vue核心对比.md](./React与Vue核心对比.md) - React vs Vue 核心对比
 - [React_UseContext_And_UseReducer.md](./React_UseContext_And_UseReducer.md) - React 状态管理

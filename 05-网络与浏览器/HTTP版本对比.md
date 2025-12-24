@@ -330,5 +330,5 @@ HTTP/3：  约 50-70% 性能提升（高延迟网络）
 ---
 
 **相关文件**：
-- [http_OSI.md](./http_OSI.md) - OSI 七层模型
-- [http_html_render.md](./http_html_render.md) - HTML 渲染机制
+- [网络协议分层模型.md](./网络协议分层模型.md) - OSI 七层模型
+- [浏览器渲染原理.md](./浏览器渲染原理.md) - 浏览器渲染机制

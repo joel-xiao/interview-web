@@ -1,5 +1,4 @@
 # React useContext + useReducer 详解（用法+原理+实战，对比Redux）
-你说的 `use` 大概率是笔误，结合上下文核心是 **React 自带的 `useContext` + `useReducer` 组合**——这是 React 原生方案，无需第三方库，就能实现轻量级状态管理，完美替代小型项目中的 Redux，下面从 用法、原理、实战、对比 全维度拆解。
 ## 一、 先明确核心：两个 Hook 的各自作用
 ### 1.  useContext：跨组件传递数据（解决「props 层层透传」）
 -  核心作用：**全局共享数据**，让组件树任意层级的组件，直接获取顶层提供的数据，无需手动通过 props 传递（解决「props 钻取」问题）。
